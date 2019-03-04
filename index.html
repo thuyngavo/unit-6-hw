@@ -26,4 +26,44 @@
 <div id="giphy-display"></div>
 
 </body>
+<script type="text/javascript">
+
+    //step1: display buttons on page and a form to create new buttons
+    
+      //array to hold buttons that generate random gifs
+      var topics = ["lama", "dog", "fish", "bird"];
+    
+      //function to render buttons
+      function renderButtons(){
+        $("#giphy-view").empty();
+    
+        for (var i = 0; i < topics.length; i++) {
+          var button = $("<button>");
+          button.addClass("giphy-btn");
+          button.attr("data-name", topics[i]);
+          button.text(topics[i]);
+          $("#giphy-view").append(button);
+        }
+      }
+    
+      // onclick function
+      $("#add-gif").on("click", function(event) {
+        event.preventDefault();
+        //grab the text from the input box
+        var topic = $("#gif-input").val().trim();
+        //added to our array
+        topics.push(topic);
+        // calling renderButtons which handles the processing of our movie array
+        renderButtons();
+      });
+    
+      //click event listener to 
+      $(document).on("click", displayRandomGif);
+    
+      // use renderButtons to display the initial list of buttons
+      renderButtons();
+    
+    //===========================================================================
+    
+</script>
 </html>
